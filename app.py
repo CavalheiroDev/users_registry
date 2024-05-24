@@ -8,6 +8,6 @@ app = Chalice(
 app.log.setLevel(settings.LOG_LEVEL)
 
 
-@app.route('/healthcheck', methods=('GET',), content_types=['application/json', ])
+@app.route('/healthcheck', methods=['GET'], content_types=['application/json'])
 def index():
     return {'app_version': settings.APP_VERSION, 'debug': settings.DEBUG}
