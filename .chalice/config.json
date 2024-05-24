@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "app_name": "users_registry",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "api_gateway_endpoint_type": "EDGE",
+      "environment_variables": {
+        "DEBUG": "True"
+      }
+    }
+  },
+  "environment_variables": {
+    "APP_VERSION": "0.0.2",
+    "TZ": "America/Sao_Paulo"
+  }
+}
