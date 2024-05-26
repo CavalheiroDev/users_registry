@@ -1,23 +1,5 @@
 {
-  "resources": [
-    {
-      "name": "default-role",
-      "resource_type": "iam_role",
-      "role_arn": "arn:aws:iam::767397983000:role/users_registry-dev",
-      "role_name": "users_registry-dev"
-    },
-    {
-      "name": "api_handler",
-      "resource_type": "lambda_function",
-      "lambda_arn": "arn:aws:lambda:us-east-1:767397983000:function:users_registry-dev"
-    },
-    {
-      "name": "rest_api",
-      "resource_type": "rest_api",
-      "rest_api_id": "hzrxx6pgi3",
-      "rest_api_url": "https://hzrxx6pgi3.execute-api.us-east-1.amazonaws.com/api/"
-    }
-  ],
+  "resources": [],
   "schema_version": "2.0",
   "backend": "api"
 }

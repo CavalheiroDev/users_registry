@@ -5,6 +5,8 @@
     "dev": {
       "api_gateway_stage": "api",
       "api_gateway_endpoint_type": "EDGE",
+      "autogen_policy": false,
+      "iam_policy_file": "policies/dev.json",
       "environment_variables": {
         "DEBUG": "True"
       }
