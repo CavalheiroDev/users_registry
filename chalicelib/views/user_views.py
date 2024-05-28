@@ -2,18 +2,23 @@ import uuid
 
 from chalice import Response, Blueprint
 from chalicelib.repositories.user_repository import user_repository
+from chalicelib.schemas.user_input_schema import UserInputSchema
 
 user_router = Blueprint(__name__)
 
 
+# FAZER MIDDLEWARE PARA LIDAR COM marshmallow.exceptions.ValidationError
 @user_router.route('/', methods=['POST'], content_types=['application/json'], cors=True)
 def create_user():
     request_body = user_router.current_request.json_body
 
+    schema = UserInputSchema(data=request_body)
+    schema.is_valid(raise_exception=True)
+
     try:
         response = user_repository.create_item(
             pk=str(uuid.uuid4()),
-            item=request_body
+            item=schema.data
         )
 
         return Response(
@@ -52,10 +57,13 @@ def retrieve_user(user_id: str):
 def update_user(user_id: str):
     request_body = user_router.current_request.json_body
 
+    schema = UserInputSchema(data=request_body)
+    schema.is_valid(raise_exception=True)
+
     try:
         response = user_repository.update_item(pk=user_id,
-                                               email=request_body['email'],
-                                               username=request_body['username'])
+                                               email=schema.data['email'],
+                                               username=schema.data['username'])
 
         return Response(
             body=response.get('Attributes'),
